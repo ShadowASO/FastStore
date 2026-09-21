@@ -1,0 +1,8 @@
+build/
+*.o
+*.log
+.env
+.vscode
+.idea/
+.vscode/
+compile_commands.json
