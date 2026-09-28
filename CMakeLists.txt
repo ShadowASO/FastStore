@@ -37,6 +37,7 @@ endif()
 
 find_package(Drogon CONFIG REQUIRED)
 find_package(jsoncpp CONFIG REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 # Gather all our source files. As the project grows across chapters,
 # this glob keeps us from hand-editing this list every time we add a file.
@@ -61,7 +62,7 @@ file(GLOB_RECURSE FASTSTORE_SOURCES
 # ---------------------------------------------------------
 
 add_executable(faststore-api
-    main.cpp
+    cmd/main.cpp
     ${FASTSTORE_SOURCES}
 )
 
@@ -70,10 +71,16 @@ target_include_directories(faststore-api
         "${CMAKE_CURRENT_SOURCE_DIR}"
 )
 
+find_library(ARGON2_LIB argon2 REQUIRED)
+
+
+
 target_link_libraries(faststore-api
     PRIVATE
         Drogon::Drogon
         jsoncpp_lib
+        ${ARGON2_LIB}
+        OpenSSL::Crypto
 )
 
 # ---------------------------------------------------------

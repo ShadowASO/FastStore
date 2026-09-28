@@ -1,0 +1,13 @@
+{
+  "rdbms": "postgresql",
+  "host": "192.168.0.36",
+  "port": 5432,
+  "dbname": "faststore",
+  "user": "faststore_dev",
+  "passwd": "faststore",
+  "tables": ["users"],
+  "relationships": {
+    "enabled": false,
+    "items": []
+  }
+}
